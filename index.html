@@ -118,9 +118,12 @@
       border-radius: 8px;
       padding: 20px;
       transition: border-color 0.2s;
+      cursor: pointer;
+      user-select: none;
     }
 
     .card:hover { border-color: #444; }
+    .card:hover .username { color: #fff; }
 
     .card .platform {
       font-size: 0.75rem;
@@ -134,7 +137,18 @@
       font-size: 1rem;
       color: #e0e0e0;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+
+    .card .copy-hint {
+      font-size: 0.7rem;
+      color: #444;
+      margin-top: 6px;
+    }
+
+    .card:hover .copy-hint { color: #666; }
 
     footer {
       text-align: center;
@@ -190,7 +204,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           Twitter/X
         </a>
-        <button onclick="copyEmail()">
+        <button onclick="copyText('minecraftisthebestgame22@gmail.com', 'Email copied!')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           Email
         </button>
@@ -200,13 +214,21 @@
     <div class="section">
       <h3>Gaming</h3>
       <div class="card-grid">
-        <div class="card">
+        <div class="card" onclick="copyText('MEHPERSON_69', 'Minecraft username copied!')">
           <div class="platform">Minecraft</div>
-          <div class="username">MEHPERSON_69</div>
+          <div class="username">
+            MEHPERSON_69
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+          <div class="copy-hint">Click to copy</div>
         </div>
-        <div class="card">
+        <div class="card" onclick="copyText('M3HPERS0N', 'Roblox username copied!')">
           <div class="platform">Roblox</div>
-          <div class="username">M3HPERS0N</div>
+          <div class="username">
+            M3HPERS0N
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+          <div class="copy-hint">Click to copy</div>
         </div>
       </div>
     </div>
@@ -217,12 +239,13 @@
     &copy; 2026 MEHPERSON · All rights reserved
   </footer>
 
-  <div id="toast">📋 Email copied!</div>
+  <div id="toast"></div>
 
   <script>
-    function copyEmail() {
-      navigator.clipboard.writeText('minecraftisthebestgame22@gmail.com');
+    function copyText(text, message) {
+      navigator.clipboard.writeText(text);
       const toast = document.getElementById('toast');
+      toast.textContent = '📋 ' + message;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 2000);
     }
