@@ -3,175 +3,220 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Me</title>
+  <title>MEHPERSON</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      background: #0f0f0f;
-      color: #e0e0e0;
-      font-family: 'Courier New', monospace;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    :root {
+      --bg: #1c1c1c;
+      --text: #d4d4d4;
+      --muted: #a3a3a3;
+      --accent: #2dd4bf;
+      --border: rgba(163,163,163,0.15);
     }
 
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    /* HEADER */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 48px;
-      border-bottom: 1px solid #222;
-    }
-
-    header h1 {
-      font-size: 1.4rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      color: #fff;
-    }
-
-    nav a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 24px;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    nav a:hover { color: #fff; }
-
-    main {
-      flex: 1;
-      max-width: 720px;
-      margin: 80px auto;
-      padding: 0 24px;
-      width: 100%;
-    }
-
-    .hero h2 {
-      font-size: 2.2rem;
-      color: #fff;
-      margin-bottom: 16px;
-    }
-
-    .hero p {
-      color: #aaa;
-      line-height: 1.8;
-      font-size: 0.95rem;
-      margin-bottom: 32px;
-    }
-
-    .links-label {
-      font-size: 0.85rem;
-      color: #666;
-      margin-bottom: 12px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 64px;
-    }
-
-    .social-links a, .social-links button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #aaa;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-family: 'Courier New', monospace;
-      padding: 8px 16px;
-      border: 1px solid #333;
-      border-radius: 6px;
-      background: transparent;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .social-links a:hover, .social-links button:hover {
-      color: #fff;
-      border-color: #555;
-      background: #1a1a1a;
-    }
-
-    .section { margin-bottom: 48px; }
-
-    .section h3 {
-      font-size: 1.1rem;
-      color: #fff;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
 
-    .card {
-      background: #161616;
-      border: 1px solid #222;
-      border-radius: 8px;
-      padding: 20px;
-      transition: border-color 0.2s;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .card:hover { border-color: #444; }
-    .card:hover .username { color: #fff; }
-
-    .card .platform {
-      font-size: 0.75rem;
-      color: #666;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .card .username {
-      font-size: 1rem;
-      color: #e0e0e0;
-      font-weight: bold;
+    .logo {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
     }
 
-    .card .copy-hint {
-      font-size: 0.7rem;
-      color: #444;
-      margin-top: 6px;
+    .logo-icon {
+      background: var(--text);
+      border-radius: 2px;
+      padding: 6px;
+      display: flex;
     }
 
-    .card:hover .copy-hint { color: #666; }
+    .logo-icon svg { color: var(--bg); }
 
+    .logo h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:first-child { color: var(--accent); }
+    nav a:hover { color: var(--accent); }
+
+    .nav-sep {
+      margin: 0 8px;
+      color: var(--muted);
+      opacity: 0.3;
+      font-weight: 300;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 6px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .icon-btn:hover { color: var(--accent); background: rgba(255,255,255,0.05); }
+
+    /* HERO */
+    .hero { display: flex; flex-direction: column; gap: 24px; }
+
+    .hero h2 { font-size: 1.5rem; font-weight: 700; color: var(--text); }
+
+    .hero p { color: var(--muted); line-height: 1.8; font-size: 0.95rem; }
+
+    .find-me {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .find-me span { color: var(--muted); font-size: 0.875rem; }
+
+    .social-icons { display: flex; align-items: center; gap: 16px; }
+
+    .social-icons a {
+      color: var(--text);
+      display: flex;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+
+    .social-icons a:hover { color: var(--accent); }
+
+    /* SECTIONS */
+    section { display: flex; flex-direction: column; gap: 32px; }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      color: var(--text);
+    }
+
+    /* GAMING */
+    .gaming-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .gaming-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      cursor: pointer;
+      group: true;
+    }
+
+    .gaming-item:hover .gaming-name { color: var(--accent); }
+
+    .gaming-platform {
+      color: var(--muted);
+      font-size: 0.875rem;
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .gaming-name {
+      color: var(--text);
+      font-size: 0.95rem;
+      text-decoration: underline;
+      text-decoration-color: rgba(163,163,163,0.3);
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .gaming-name svg { opacity: 0.4; }
+
+    /* FOOTER */
     footer {
-      text-align: center;
-      padding: 24px;
-      border-top: 1px solid #222;
-      color: #444;
-      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.75rem;
+      color: var(--muted);
     }
 
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+
+    .footer-nav { display: flex; align-items: center; gap: 12px; }
+    .footer-nav a:not(:last-child) {
+      border-right: 1px solid rgba(163,163,163,0.3);
+      padding-right: 12px;
+    }
+
+    /* TOAST */
     #toast {
       position: fixed;
       bottom: 32px;
       left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: #fff;
-      color: #0f0f0f;
-      padding: 10px 24px;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 8px 20px;
       border-radius: 999px;
-      font-size: 0.85rem;
-      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
       opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
+      transition: opacity 0.25s, transform 0.25s;
       pointer-events: none;
+      white-space: nowrap;
     }
 
     #toast.show {
@@ -181,75 +226,112 @@
   </style>
 </head>
 <body>
+<div class="container">
 
+  <!-- HEADER -->
   <header>
-    <h1>MEHPERSON</h1>
-    <nav>
-      <a href="#">Home</a>
-    </nav>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        </svg>
+      </div>
+      <h1>MEHPERSON</h1>
+    </div>
+
+    <div class="header-right">
+      <nav>
+        <a href="#">Home</a>
+        <span class="nav-sep">|</span>
+        <a href="#">About</a>
+      </nav>
+      <button class="icon-btn" title="Toggle theme" onclick="toggleTheme()">
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+    </div>
   </header>
 
-  <main>
-    <div class="hero">
-      <h2>About Me</h2>
-      <p>Hey! I'm MEHPERSON. Welcome to my personal page.</p>
+  <!-- HERO -->
+  <div class="hero">
+    <h2>About Me</h2>
+    <p>Hey! I'm MEHPERSON. Welcome to my personal page.</p>
 
-      <p class="links-label">Find me on</p>
-      <div class="social-links">
-        <a href="https://github.com/MEHPERSON69" target="_blank">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
+    <div class="find-me">
+      <span>Find me on</span>
+      <div class="social-icons">
+        <a href="https://github.com/MEHPERSON69" target="_blank" title="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
-        <a href="https://x.com/MEHPERSON69" target="_blank">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          Twitter/X
+        <a href="https://x.com/MEHPERSON69" target="_blank" title="Twitter/X">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <button onclick="copyText('minecraftisthebestgame22@gmail.com', 'Email copied!')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          Email
-        </button>
+        <a href="#" title="Email" onclick="copyText('minecraftisthebestgame22@gmail.com', 'Email copied!'); return false;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
       </div>
     </div>
+  </div>
 
-    <div class="section">
-      <h3>Gaming</h3>
-      <div class="card-grid">
-        <div class="card" onclick="copyText('MEHPERSON_69', 'Minecraft username copied!')">
-          <div class="platform">Minecraft</div>
-          <div class="username">
-            MEHPERSON_69
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          </div>
-          <div class="copy-hint">Click to copy</div>
-        </div>
-        <div class="card" onclick="copyText('M3HPERS0N', 'Roblox username copied!')">
-          <div class="platform">Roblox</div>
-          <div class="username">
-            M3HPERS0N
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          </div>
-          <div class="copy-hint">Click to copy</div>
-        </div>
+  <!-- GAMING -->
+  <section>
+    <h2 class="section-title">Gaming</h2>
+    <div class="gaming-list">
+      <div class="gaming-item" onclick="copyText('MEHPERSON_69', 'Minecraft username copied!')">
+        <span class="gaming-platform">Minecraft</span>
+        <span class="gaming-name">
+          MEHPERSON_69
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </span>
+      </div>
+      <div class="gaming-item" onclick="copyText('M3HPERS0N', 'Roblox username copied!')">
+        <span class="gaming-platform">Roblox</span>
+        <span class="gaming-name">
+          M3HPERS0N
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </span>
       </div>
     </div>
+  </section>
 
-  </main>
-
+  <!-- FOOTER -->
   <footer>
-    &copy; 2026 MEHPERSON · All rights reserved
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span>Copyright © 2026</span>
+      <span>🚀</span>
+      <a href="#">MEHPERSON</a>
+    </div>
+    <nav class="footer-nav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+    </nav>
   </footer>
 
-  <div id="toast"></div>
+</div>
 
-  <script>
-    function copyText(text, message) {
-      navigator.clipboard.writeText(text);
-      const toast = document.getElementById('toast');
-      toast.textContent = '📋 ' + message;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2000);
-    }
-  </script>
+<div id="toast"></div>
 
+<script>
+  function copyText(text, msg) {
+    navigator.clipboard.writeText(text);
+    const toast = document.getElementById('toast');
+    toast.textContent = '📋 ' + msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  }
+
+  let dark = true;
+  function toggleTheme() {
+    dark = !dark;
+    document.documentElement.style.setProperty('--bg', dark ? '#1c1c1c' : '#ffffff');
+    document.documentElement.style.setProperty('--text', dark ? '#d4d4d4' : '#1c1c1c');
+    document.documentElement.style.setProperty('--muted', dark ? '#a3a3a3' : '#666666');
+    document.body.style.background = dark ? '#1c1c1c' : '#ffffff';
+  }
+</script>
 </body>
 </html>
